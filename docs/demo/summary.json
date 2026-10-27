@@ -1,0 +1,27 @@
+{
+  "kind": "synthetic-fixture-run",
+  "coreRevision": "fda093afd02e5bb4066d5b083a50c623aad6a228",
+  "inputSha256": "59d0655d60dd9256cd14a9aae2d90c2aa577fe455aa052b5617f986ee8136b59",
+  "distanceM": 3154.311799461846,
+  "estimatedSeconds": 630.8623598923692,
+  "spacingM": 17.320508075688775,
+  "surveyLegs": 16,
+  "transitLegs": 21,
+  "navigationWaypoints": 38,
+  "wplRows": 39,
+  "homeFrame": 0,
+  "navigationFrames": [
+    3
+  ],
+  "homeAmslM": 900,
+  "relativeHomeAltitudeM": 50,
+  "estimatedBatteryPercent": 42.05749065949128,
+  "usableBatterySeconds": 1200,
+  "artifactsSha256": {
+    "plan.json": "2403133dee7701540d7591d8c92aeb68bfa79e7c138cdbb609708f45ec7c502c",
+    "route.geojson": "475601c19cfe3ef000fa6dbedb3462866bd11c2322a796c23447538a9480863c",
+    "survey.waypoints": "50cfe67eadd5158ee916492f40434de2c41f37b986b30e4fc8bfbcbee288668c",
+    "route.svg": "8ac8ce857810a3b505a030b60bab17c98c336b54de3139b8a19ef28ebad55c78"
+  },
+  "note": "Synthetic fixture and synthetic home metadata, not a measured site or real flight."
+}

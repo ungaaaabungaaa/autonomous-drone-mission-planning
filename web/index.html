@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Wayline — Offline survey planner</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.mjs"></script>
+  </head>
+  <body>
+    <a class="skip" href="#workbench">Skip to planner</a>
+    <header>
+      <a href="./" class="brand" aria-label="Wayline home"
+        ><span class="brand-mark" aria-hidden="true">↗</span> WAYLINE<span
+          class="edition"
+          >FIELD TOOLS / 01</span
+        ></a
+      ><span class="offline"
+        ><i></i> Local processing · no vehicle connection</span
+      >
+    </header>
+    <main id="workbench">
+      <section class="intro">
+        <div>
+          <p class="eyebrow">PIXHAWK MISSION STUDY / OFFLINE WORKBENCH</p>
+          <h1>Give your survey<br />a clear direction.</h1>
+          <p class="lead">
+            Draw a boundary. Set camera assumptions. Inspect an open route
+            before you export it.
+          </p>
+        </div>
+        <aside class="intro-note">
+          <span class="index">01—03</span>
+          <p>Geometry first.<br />Flight checks still required.</p>
+          <small
+            >This tool does not connect to a vehicle or verify a real
+            flight.</small
+          >
+        </aside>
+      </section>
+      <div class="workbench">
+        <aside class="controls">
+          <section class="step">
+            <h2><span>01</span> Survey area</h2>
+            <label class="file-label" for="area-file"
+              >Load local GeoJSON
+              <input
+                id="area-file"
+                type="file"
+                accept=".json,.geojson,application/json,application/geo+json"
+            /></label>
+            <p class="hint">
+              One 2D polygon, up to 512 KiB. Coordinates use longitude,
+              latitude.
+            </p>
+            <div class="button-row">
+              <button id="example" class="quiet">Load example</button
+              ><button id="draw-outer" class="quiet">Draw boundary</button
+              ><button id="draw-hole" class="quiet">Draw exclusion</button>
+            </div>
+            <div id="drawing-tools" hidden>
+              <p id="drawing-status" class="hint"></p>
+              <div class="two">
+                <label
+                  >Vertex longitude<input
+                    id="vertex-lon"
+                    type="number"
+                    step="any" /></label
+                ><label
+                  >Vertex latitude<input
+                    id="vertex-lat"
+                    type="number"
+                    step="any"
+                /></label>
+              </div>
+              <div class="button-row">
+                <button id="add-vertex" class="quiet">Add vertex</button
+                ><button id="undo-vertex" class="quiet">Undo</button
+                ><button id="finish-ring" class="quiet">Finish ring</button
+                ><button id="cancel-ring" class="quiet">Cancel</button>
+              </div>
+            </div>
+            <details>
+              <summary>Edit source coordinates</summary>
+              <label for="source">GeoJSON polygon</label
+              ><textarea id="source" spellcheck="false" rows="7"></textarea>
+            </details>
+          </section>
+          <section class="step">
+            <h2><span>02</span> Survey assumptions</h2>
+            <div class="two">
+              <label
+                >Camera AGL <span>m, assumed</span
+                ><input
+                  id="cameraAglM"
+                  type="number"
+                  min="5"
+                  max="500"
+                  value="50"
+                  step="any" /></label
+              ><label
+                >Waypoint height <span>m, relative to home</span
+                ><input
+                  id="relativeHomeAltitudeM"
+                  type="number"
+                  min="1"
+                  max="500"
+                  value="50"
+                  step="any" /></label
+              ><label
+                >Horizontal FOV <span>degrees</span
+                ><input
+                  id="horizontalFovDeg"
+                  type="number"
+                  min="10"
+                  max="150"
+                  value="60"
+                  step="any" /></label
+              ><label
+                >Vertical FOV <span>degrees</span
+                ><input
+                  id="verticalFovDeg"
+                  type="number"
+                  min="10"
+                  max="120"
+                  value="45"
+                  step="any" /></label
+              ><label
+                >Side overlap <span>%</span
+                ><input
+                  id="sideOverlap"
+                  type="number"
+                  min="0"
+                  max="95"
+                  value="70"
+                  step="any" /></label
+              ><label
+                >Front overlap <span>%</span
+                ><input
+                  id="frontOverlap"
+                  type="number"
+                  min="0"
+                  max="95"
+                  value="75"
+                  step="any" /></label
+              ><label
+                >Assumed speed <span>m/s</span
+                ><input
+                  id="speedMps"
+                  type="number"
+                  min="0.1"
+                  max="100"
+                  value="5"
+                  step="any" /></label
+              ><label
+                >Nominal battery <span>minutes</span
+                ><input
+                  id="batteryMinutes"
+                  type="number"
+                  min="1"
+                  max="1440"
+                  value="25"
+                  step="any" /></label
+              ><label
+                >Time reserve <span>%</span
+                ><input
+                  id="reservePercent"
+                  type="number"
+                  min="0"
+                  max="90"
+                  value="20"
+                  step="any"
+              /></label>
+            </div>
+            <p class="hint">
+              AGL is an independent flat-ground camera assumption. It is not
+              calculated from the waypoint height.
+            </p>
+            <button id="generate" class="primary">
+              Generate survey <span aria-hidden="true">↗</span>
+            </button>
+          </section>
+        </aside>
+        <div class="results">
+          <section class="map-panel" aria-labelledby="map-heading">
+            <div class="panel-top">
+              <div>
+                <p class="eyebrow">ROUTE PREVIEW</p>
+                <h2 id="map-heading">Local coordinate grid</h2>
+              </div>
+              <span class="tag">NO BASEMAP</span>
+            </div>
+            <div class="map-wrap">
+              <svg
+                id="map"
+                viewBox="0 0 1000 700"
+                role="img"
+                aria-labelledby="map-title map-description"
+              >
+                <title id="map-title">Survey boundary and open route</title>
+                <desc id="map-description">
+                  The grid shows longitude and latitude. Blue lines are survey
+                  legs. Dashed orange lines are transit legs. Exclusions protect
+                  only the mathematical centreline.
+                </desc>
+              </svg>
+            </div>
+            <div class="legend">
+              <span><i class="survey-line"></i>Survey</span
+              ><span><i class="transit-line"></i>Transit</span
+              ><span><i class="hole-box"></i>Exclusion</span
+              ><span id="orientation">Awaiting geometry</span>
+            </div>
+          </section>
+          <p id="status" class="status" role="status" aria-live="polite">
+            Loading the synthetic example…
+          </p>
+          <section class="metrics" aria-label="Calculated route measurements">
+            <div>
+              <span>Route length</span><strong id="distance">—</strong
+              ><small>geometric distance</small>
+            </div>
+            <div>
+              <span>Nominal time</span><strong id="duration">—</strong
+              ><small>constant speed only</small>
+            </div>
+            <div>
+              <span>Sweep spacing</span><strong id="spacing">—</strong
+              ><small>camera model</small>
+            </div>
+            <div>
+              <span>Route points</span><strong id="points">—</strong
+              ><small>open start → end</small>
+            </div>
+          </section>
+          <section class="route-notes">
+            <div>
+              <h3>Centreline check only</h3>
+              <p>
+                Holes exclude route lines. Camera footprints, vehicle size, turn
+                behaviour, and tracking error can extend beyond them.
+              </p>
+            </div>
+            <div>
+              <h3 id="budget-heading">Nominal time budget</h3>
+              <p id="budget">
+                Generate a route to compare model time with the nominal battery
+                duration and reserve.
+              </p>
+            </div>
+          </section>
+          <section class="export step">
+            <h2><span>03</span> Inspect &amp; export</h2>
+            <p>
+              Save the measured route first. A waypoint file also needs an
+              explicit planned home. Its altitude is above mean sea level
+              (AMSL).
+            </p>
+            <div class="button-row">
+              <button id="download-report" class="quiet" disabled>
+                Report JSON ↓</button
+              ><button id="download-geojson" class="quiet" disabled>
+                Route GeoJSON ↓
+              </button>
+            </div>
+            <details>
+              <summary>Prepare a QGC WPL 110 waypoint file</summary>
+              <p class="hint">
+                The first row is planned-home metadata in QGroundControl. Route
+                rows use altitude relative to home. No terrain, geoid, or
+                ellipsoid conversion occurs.
+              </p>
+              <div class="three">
+                <label
+                  >Home latitude<input
+                    id="home-lat"
+                    type="number"
+                    min="-80"
+                    max="80"
+                    step="any"
+                    placeholder="Explicit value" /></label
+                ><label
+                  >Home longitude<input
+                    id="home-lon"
+                    type="number"
+                    min="-180"
+                    max="180"
+                    step="any"
+                    placeholder="Explicit value" /></label
+                ><label
+                  >Home AMSL <span>m</span
+                  ><input
+                    id="home-alt"
+                    type="number"
+                    min="-500"
+                    max="10000"
+                    step="any"
+                    placeholder="Explicit value"
+                /></label>
+              </div>
+              <button id="download-wpl" class="quiet" disabled>
+                Validate &amp; save waypoints ↓
+              </button>
+              <p class="hint">
+                This is an open route. Home connectors, takeoff, landing, RTL,
+                speed commands, and camera triggers are not included. Waypoint
+                acceptance remains vehicle-specific.
+              </p>
+            </details>
+          </section>
+        </div>
+      </div>
+      <footer>
+        <p>OFFLINE BY DESIGN. CHECK BEFORE FLIGHT.</p>
+        <p>
+          Two sweep directions are compared; this is not an optimal coverage
+          guarantee. Estimates do not prove energy use, collision clearance,
+          legality, or aircraft readiness.
+        </p>
+        <a
+          href="https://github.com/ungaaaabungaaa/autonomous-drone-mission-planning"
+          target="_blank"
+          rel="noreferrer"
+          >Source, methods &amp; limits ↗</a
+        >
+      </footer>
+    </main>
+  </body>
+</html>

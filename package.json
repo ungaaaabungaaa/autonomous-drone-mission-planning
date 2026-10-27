@@ -1,0 +1,26 @@
+{
+  "name": "offline-drone-mission-planner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Offline polygon survey planning with explicit camera assumptions and validated QGC WPL exports.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "build": "tsc && node scripts/build-site.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit --noUnusedLocals --noUnusedParameters",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "test:coverage": "node --experimental-strip-types --experimental-test-coverage --test tests/*.test.mjs",
+    "check": "npm run lint && npm test && npm run build",
+    "dev": "npm run build && node scripts/serve.mjs",
+    "demo": "npm run build && node scripts/demo.mjs",
+    "demo:update": "npm run build && node scripts/demo.mjs --write"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "7.0.2"
+  }
+}

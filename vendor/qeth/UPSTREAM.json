@@ -1,0 +1,30 @@
+{
+  "repository": "https://github.com/ungaaaabungaaa/qeth",
+  "commit": "fda093afd02e5bb4066d5b083a50c623aad6a228",
+  "license": "MIT",
+  "update_owner": "Qeth repository; review and re-vendor exact source when updating",
+  "files": [
+    {
+      "path": "mission.ts",
+      "upstream_path": "src/mission.ts",
+      "sha256": "79ae1d9feb5425346ae6e0eed9f03ac7bc571363b944bd0b631b5a3bedac5c59"
+    },
+    {
+      "path": "errors.ts",
+      "upstream_path": "src/errors.ts",
+      "sha256": "75edc4a8fad7d6a30c3a3cbc4f4bc4c8ff8ea06f39ab9517f381b28a7651ca8e"
+    },
+    {
+      "path": "LICENSE",
+      "upstream_path": "LICENSE",
+      "sha256": "864583689a5dd0bf7bccbddb6557f42b9e5a400967bc310a477b95ad26606c87"
+    }
+  ],
+  "local_source_patches": [],
+  "upstream_tests": {
+    "path": "tests/mission.test.mjs",
+    "source_sha256": "b2f416110c4927b17134e64c91462fa72a8cb8246d9c70ed42348574d7f218be",
+    "local_file": "tests/upstream-mission.test.mjs",
+    "adaptation": "Only the mission module import path is changed."
+  }
+}

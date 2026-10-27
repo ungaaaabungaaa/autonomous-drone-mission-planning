@@ -1,0 +1,884 @@
+{
+  "schemaVersion": 1,
+  "kind": "offline-survey-plan",
+  "options": {
+    "cameraAglM": 50,
+    "horizontalFovDeg": 60,
+    "verticalFovDeg": 45,
+    "sideOverlap": 0.7,
+    "frontOverlap": 0.75,
+    "relativeHomeAltitudeM": 50,
+    "speedMps": 5,
+    "batteryMinutes": 25,
+    "reservePercent": 20
+  },
+  "altitudeReference": "relative-home",
+  "homeConnectorsGenerated": false,
+  "coreRevision": "fda093afd02e5bb4066d5b083a50c623aad6a228",
+  "plan": {
+    "schemaVersion": 1,
+    "kind": "mission-plan",
+    "assumptions": {
+      "spacingM": 17.320508075688775,
+      "speedMps": 5,
+      "altitudeM": 50,
+      "batteryMinutes": 25,
+      "reservePercent": 20,
+      "optimize": "distance",
+      "projection": "Local equirectangular projection on a sphere of radius 6371008.8 m"
+    },
+    "waypoints": [
+      {
+        "lon": 77.59,
+        "lat": 12.970076923076924,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.592,
+        "lat": 12.970076923076924,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.592,
+        "lat": 12.97023076923077,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.59,
+        "lat": 12.97023076923077,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.59,
+        "lat": 12.970384615384615,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.592,
+        "lat": 12.970384615384615,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.592,
+        "lat": 12.970538461538462,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.59,
+        "lat": 12.970538461538462,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.59,
+        "lat": 12.970692307692309,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.592,
+        "lat": 12.970692307692309,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.592,
+        "lat": 12.970846153846153,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.5913,
+        "lat": 12.970846153846153,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.5913,
+        "lat": 12.9707,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.5907,
+        "lat": 12.9707,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.5907,
+        "lat": 12.970846153846153,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.59,
+        "lat": 12.970846153846153,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.59,
+        "lat": 12.971,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.5907,
+        "lat": 12.971,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.5907,
+        "lat": 12.9713,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.5913,
+        "lat": 12.9713,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.5913,
+        "lat": 12.971,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.592,
+        "lat": 12.971,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.592,
+        "lat": 12.971153846153847,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.5913,
+        "lat": 12.971153846153847,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.5913,
+        "lat": 12.9713,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.5907,
+        "lat": 12.9713,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.5907,
+        "lat": 12.971153846153847,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.59,
+        "lat": 12.971153846153847,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.59,
+        "lat": 12.971307692307692,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.592,
+        "lat": 12.971307692307692,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.592,
+        "lat": 12.971461538461538,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.59,
+        "lat": 12.971461538461538,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.59,
+        "lat": 12.971615384615385,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.592,
+        "lat": 12.971615384615385,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.592,
+        "lat": 12.97176923076923,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.59,
+        "lat": 12.97176923076923,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.59,
+        "lat": 12.971923076923076,
+        "altitudeM": 50
+      },
+      {
+        "lon": 77.592,
+        "lat": 12.971923076923076,
+        "altitudeM": 50
+      }
+    ],
+    "legs": [
+      {
+        "from": [
+          77.59,
+          12.970076923076924
+        ],
+        "to": [
+          77.592,
+          12.970076923076924
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.592,
+          12.970076923076924
+        ],
+        "to": [
+          77.592,
+          12.97023076923077
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.592,
+          12.97023076923077
+        ],
+        "to": [
+          77.59,
+          12.97023076923077
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.59,
+          12.97023076923077
+        ],
+        "to": [
+          77.59,
+          12.970384615384615
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.59,
+          12.970384615384615
+        ],
+        "to": [
+          77.592,
+          12.970384615384615
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.592,
+          12.970384615384615
+        ],
+        "to": [
+          77.592,
+          12.970538461538462
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.592,
+          12.970538461538462
+        ],
+        "to": [
+          77.59,
+          12.970538461538462
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.59,
+          12.970538461538462
+        ],
+        "to": [
+          77.59,
+          12.970692307692309
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.59,
+          12.970692307692309
+        ],
+        "to": [
+          77.592,
+          12.970692307692309
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.592,
+          12.970692307692309
+        ],
+        "to": [
+          77.592,
+          12.970846153846153
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.592,
+          12.970846153846153
+        ],
+        "to": [
+          77.5913,
+          12.970846153846153
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.5913,
+          12.970846153846153
+        ],
+        "to": [
+          77.5913,
+          12.9707
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.5913,
+          12.9707
+        ],
+        "to": [
+          77.5907,
+          12.9707
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.5907,
+          12.9707
+        ],
+        "to": [
+          77.5907,
+          12.970846153846153
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.5907,
+          12.970846153846153
+        ],
+        "to": [
+          77.59,
+          12.970846153846153
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.59,
+          12.970846153846153
+        ],
+        "to": [
+          77.59,
+          12.971
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.59,
+          12.971
+        ],
+        "to": [
+          77.5907,
+          12.971
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.5907,
+          12.971
+        ],
+        "to": [
+          77.5907,
+          12.9713
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.5907,
+          12.9713
+        ],
+        "to": [
+          77.5913,
+          12.9713
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.5913,
+          12.9713
+        ],
+        "to": [
+          77.5913,
+          12.971
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.5913,
+          12.971
+        ],
+        "to": [
+          77.592,
+          12.971
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.592,
+          12.971
+        ],
+        "to": [
+          77.592,
+          12.971153846153847
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.592,
+          12.971153846153847
+        ],
+        "to": [
+          77.5913,
+          12.971153846153847
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.5913,
+          12.971153846153847
+        ],
+        "to": [
+          77.5913,
+          12.9713
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.5913,
+          12.9713
+        ],
+        "to": [
+          77.5907,
+          12.9713
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.5907,
+          12.9713
+        ],
+        "to": [
+          77.5907,
+          12.971153846153847
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.5907,
+          12.971153846153847
+        ],
+        "to": [
+          77.59,
+          12.971153846153847
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.59,
+          12.971153846153847
+        ],
+        "to": [
+          77.59,
+          12.971307692307692
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.59,
+          12.971307692307692
+        ],
+        "to": [
+          77.592,
+          12.971307692307692
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.592,
+          12.971307692307692
+        ],
+        "to": [
+          77.592,
+          12.971461538461538
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.592,
+          12.971461538461538
+        ],
+        "to": [
+          77.59,
+          12.971461538461538
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.59,
+          12.971461538461538
+        ],
+        "to": [
+          77.59,
+          12.971615384615385
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.59,
+          12.971615384615385
+        ],
+        "to": [
+          77.592,
+          12.971615384615385
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.592,
+          12.971615384615385
+        ],
+        "to": [
+          77.592,
+          12.97176923076923
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.592,
+          12.97176923076923
+        ],
+        "to": [
+          77.59,
+          12.97176923076923
+        ],
+        "kind": "survey"
+      },
+      {
+        "from": [
+          77.59,
+          12.97176923076923
+        ],
+        "to": [
+          77.59,
+          12.971923076923076
+        ],
+        "kind": "transit"
+      },
+      {
+        "from": [
+          77.59,
+          12.971923076923076
+        ],
+        "to": [
+          77.592,
+          12.971923076923076
+        ],
+        "kind": "survey"
+      }
+    ],
+    "distanceM": 3154.311799461846,
+    "estimatedSeconds": 630.8623598923692,
+    "usableBatterySeconds": 1200,
+    "estimatedBatteryPercent": 42.05749065949128,
+    "withinBatteryBudget": true,
+    "warnings": [
+      "Offline open route. Wind, acceleration, takeoff/landing and hardware limits are not modeled. No implicit return-to-home segment is included."
+    ],
+    "geojson": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "role": "survey-boundary"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  77.59,
+                  12.97
+                ],
+                [
+                  77.592,
+                  12.97
+                ],
+                [
+                  77.592,
+                  12.972
+                ],
+                [
+                  77.59,
+                  12.972
+                ],
+                [
+                  77.59,
+                  12.97
+                ]
+              ],
+              [
+                [
+                  77.5907,
+                  12.9707
+                ],
+                [
+                  77.5913,
+                  12.9707
+                ],
+                [
+                  77.5913,
+                  12.9713
+                ],
+                [
+                  77.5907,
+                  12.9713
+                ],
+                [
+                  77.5907,
+                  12.9707
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "role": "offline-survey-route",
+            "altitudeM": 50,
+            "altitudeReference": "relative-home"
+          },
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                77.59,
+                12.970076923076924
+              ],
+              [
+                77.592,
+                12.970076923076924
+              ],
+              [
+                77.592,
+                12.97023076923077
+              ],
+              [
+                77.59,
+                12.97023076923077
+              ],
+              [
+                77.59,
+                12.970384615384615
+              ],
+              [
+                77.592,
+                12.970384615384615
+              ],
+              [
+                77.592,
+                12.970538461538462
+              ],
+              [
+                77.59,
+                12.970538461538462
+              ],
+              [
+                77.59,
+                12.970692307692309
+              ],
+              [
+                77.592,
+                12.970692307692309
+              ],
+              [
+                77.592,
+                12.970846153846153
+              ],
+              [
+                77.5913,
+                12.970846153846153
+              ],
+              [
+                77.5913,
+                12.9707
+              ],
+              [
+                77.5907,
+                12.9707
+              ],
+              [
+                77.5907,
+                12.970846153846153
+              ],
+              [
+                77.59,
+                12.970846153846153
+              ],
+              [
+                77.59,
+                12.971
+              ],
+              [
+                77.5907,
+                12.971
+              ],
+              [
+                77.5907,
+                12.9713
+              ],
+              [
+                77.5913,
+                12.9713
+              ],
+              [
+                77.5913,
+                12.971
+              ],
+              [
+                77.592,
+                12.971
+              ],
+              [
+                77.592,
+                12.971153846153847
+              ],
+              [
+                77.5913,
+                12.971153846153847
+              ],
+              [
+                77.5913,
+                12.9713
+              ],
+              [
+                77.5907,
+                12.9713
+              ],
+              [
+                77.5907,
+                12.971153846153847
+              ],
+              [
+                77.59,
+                12.971153846153847
+              ],
+              [
+                77.59,
+                12.971307692307692
+              ],
+              [
+                77.592,
+                12.971307692307692
+              ],
+              [
+                77.592,
+                12.971461538461538
+              ],
+              [
+                77.59,
+                12.971461538461538
+              ],
+              [
+                77.59,
+                12.971615384615385
+              ],
+              [
+                77.592,
+                12.971615384615385
+              ],
+              [
+                77.592,
+                12.97176923076923
+              ],
+              [
+                77.59,
+                12.97176923076923
+              ],
+              [
+                77.59,
+                12.971923076923076
+              ],
+              [
+                77.592,
+                12.971923076923076
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "camera": {
+    "footprintWidthM": 57.735026918962575,
+    "footprintLengthM": 41.4213562373095,
+    "suggestedSamplingDistanceM": 10.355339059327376,
+    "assumedAglM": 50,
+    "model": "Ideal nadir camera over flat ground at an independently assumed AGL height; no terrain or gimbal model."
+  },
+  "warnings": [
+    "Offline open route. Wind, acceleration, takeoff/landing and hardware limits are not modeled. No implicit return-to-home segment is included.",
+    "Waypoint altitude is relative to home. Camera AGL is an independent assumption, not a terrain-derived height.",
+    "Exclusions constrain the mathematical route centreline, not camera footprints, vehicle clearance, waypoint acceptance, or a transmitted geofence.",
+    "Home connectors, takeoff, landing, and RTL are not generated. Speed and camera-trigger settings are not commanded by the waypoint export.",
+    "Time and battery results use constant-speed and nominal-duration assumptions; they are not flight approval or measured energy consumption."
+  ],
+  "plannedHome": {
+    "lat": 12.9698,
+    "lon": 77.5898,
+    "altitudeAmslM": 900
+  }
+}

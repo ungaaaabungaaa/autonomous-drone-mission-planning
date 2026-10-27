@@ -1,0 +1,9 @@
+{
+  "source": "https://mavlink.io/en/file_formats/",
+  "retrieved": "2026-10-27",
+  "fixture": "official-wpl110-home-row.waypoints",
+  "description": "Header and first numeric row excerpt from the official documentation example. Values and field order are preserved; no geographic-coordinate correction is inferred.",
+  "qgc_import_source": "https://github.com/mavlink/qgroundcontrol/blob/98ee79c1cf3c173e22939bade6ddf06376f78e13/src/MissionManager/MissionController.cc",
+  "home_semantics": "QGroundControl consumes the first WPL 110 row as planned-home metadata. The 120 variant is different and is not supported here.",
+  "note": "A one-row fixture tests format parsing only and contains no navigation route. It is not a recorded flight."
+}

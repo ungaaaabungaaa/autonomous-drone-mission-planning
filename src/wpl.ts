@@ -108,6 +108,36 @@ function validateItems(input: unknown): MissionItem[] {
   });
 }
 
+export function wplAltitudeSummary(items: MissionItem[]): {
+  plannedHomeAmslM: number;
+  minimumDerivedAmslM: number | null;
+  maximumDerivedAmslM: number | null;
+  waypoints: {
+    sequence: number;
+    sourceReference: "relative-home" | "AMSL";
+    sourceAltitudeM: number;
+    derivedAmslM: number;
+  }[];
+  assumption: string;
+} {
+  const checked = validateItems(items);
+  const plannedHomeAmslM = checked[0]!.params[6];
+  const waypoints = checked.slice(1).map((item) => ({
+    sequence: item.sequence,
+    sourceReference: item.frame === 3 ? "relative-home" as const : "AMSL" as const,
+    sourceAltitudeM: item.params[6],
+    derivedAmslM: item.params[6] + (item.frame === 3 ? plannedHomeAmslM : 0),
+  }));
+  const altitudes = waypoints.map((item) => item.derivedAmslM);
+  return {
+    plannedHomeAmslM,
+    minimumDerivedAmslM: altitudes.length ? Math.min(...altitudes) : null,
+    maximumDerivedAmslM: altitudes.length ? Math.max(...altitudes) : null,
+    waypoints,
+    assumption: "Derived from planned-home AMSL metadata and supported WPL frames only; no terrain, geoid, ellipsoid or AGL conversion and no flight validation.",
+  };
+}
+
 export function parseWpl(text: string): MissionItem[] {
   if (
     typeof text !== "string" ||

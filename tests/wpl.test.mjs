@@ -94,3 +94,25 @@ test("serializer rejects sparse mission rows instead of emitting an invalid WPL 
   }
   assert.deepEqual(parseWpl(serializeWpl(rows)), rows);
 });
+test("altitude summary resolves mixed frames after lossless coordinate round trips", async () => {
+  const { wplAltitudeSummary } = await import("../src/wpl.ts");
+  const rows = parseWpl(buildArtifacts(area, {}, home).wpl).slice(0, 3);
+  rows[1].params[4] = -90;
+  rows[1].params[5] = -180;
+  rows[1].params[6] = 70;
+  rows[2].frame = 0;
+  rows[2].params[4] = 90;
+  rows[2].params[5] = 180;
+  rows[2].params[6] = 950;
+  const restored = parseWpl(serializeWpl(rows));
+  assert.deepEqual(restored, rows);
+  const summary = wplAltitudeSummary(restored);
+  assert.equal(summary.plannedHomeAmslM, 900);
+  assert.equal(summary.minimumDerivedAmslM, 950);
+  assert.equal(summary.maximumDerivedAmslM, 970);
+  assert.deepEqual(summary.waypoints.map(row => row.derivedAmslM), [970, 950]);
+  assert.deepEqual(summary.waypoints.map(row => row.sourceReference), ["relative-home", "AMSL"]);
+  assert.equal(wplAltitudeSummary(rows.slice(0, 1)).minimumDerivedAmslM, null);
+  assert.equal(wplAltitudeSummary(rows.slice(0, 1)).maximumDerivedAmslM, null);
+  assert.throws(() => wplAltitudeSummary([, rows[1]]));
+});

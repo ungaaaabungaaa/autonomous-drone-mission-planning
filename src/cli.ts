@@ -2,7 +2,12 @@ import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { QethError } from "../vendor/qeth/errors.ts";
 import { parseBoundedJson, MAX_JSON_BYTES } from "./validation.ts";
-import { buildArtifacts, parseWpl, MAX_WPL_BYTES } from "./wpl.ts";
+import {
+  buildArtifacts,
+  parseWpl,
+  wplAltitudeSummary,
+  MAX_WPL_BYTES,
+} from "./wpl.ts";
 import { readTextFile, writeNewBundle } from "./io.ts";
 
 const HELP = `Offline survey planner\n\nplan AREA.geojson --out NEW_DIR [--settings OPTIONS.json] [--home HOME.json]\ncheck SURVEY.waypoints\n\nHome data must explicitly contain lat, lon, altitudeAmslM. Without it, plan exports only JSON/GeoJSON.\nRoutes are open: home connectors, takeoff, landing and RTL are not generated. No vehicle connection occurs.\n`;
@@ -30,6 +35,7 @@ export async function main(
             format: "QGC WPL 110",
             plannedHomeAltitudeReference: "AMSL",
             navigationWaypoints: items.length - 1,
+            altitudeSummary: wplAltitudeSummary(items),
             navigationAltitudeReferences: [
               ...new Set(
                 items

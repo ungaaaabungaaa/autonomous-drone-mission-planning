@@ -80,3 +80,18 @@ test("CLI handles malformed arguments, invalid UTF8, oversized files, and symlin
   }
   assert.equal(await run(["plan", link, "--out", out]), 2);
 });
+test("check prints metadata-derived AMSL bounds without treating altitude as terrain AGL", async (t) => {
+  const dir = await mkdtemp(join(tmpdir(), "drone-altitude-"));
+  t.after(() => rm(dir, { recursive: true, force: true }));
+  const file = join(dir, "mission.waypoints");
+  const { buildArtifacts } = await import("../src/wpl.ts");
+  await writeFile(file, buildArtifacts(area, { relativeHomeAltitudeM: 70 }, {
+    lat: 0, lon: 0, altitudeAmslM: 900,
+  }).wpl);
+  let output = "", error = "";
+  assert.equal(await main(["check", file], x => output += x, x => error += x), 0, error);
+  const report = JSON.parse(output);
+  assert.equal(report.altitudeSummary.minimumDerivedAmslM, 970);
+  assert.equal(report.altitudeSummary.maximumDerivedAmslM, 970);
+  assert.match(report.altitudeSummary.assumption, /no terrain/);
+});

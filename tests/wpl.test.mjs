@@ -87,3 +87,10 @@ test("export requires explicit finite home values and rejects edited reports as 
   assert.equal(result.wpl, undefined);
   assert.throws(() => buildArtifacts(result.report, {}, home));
 });
+test("serializer rejects sparse mission rows instead of emitting an invalid WPL file", () => {
+  const rows = parseWpl(buildArtifacts(area, {}, home).wpl);
+  for (const sparse of [Array(1), [rows[0], , rows[1]], [, rows[0]]]) {
+    assert.throws(() => serializeWpl(sparse), /Invalid WPL row/);
+  }
+  assert.deepEqual(parseWpl(serializeWpl(rows)), rows);
+});

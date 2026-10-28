@@ -52,7 +52,7 @@ export function plannedHome(input: unknown): PlannedHome {
 function validateItems(input: unknown): MissionItem[] {
   if (!Array.isArray(input) || input.length < 1 || input.length > 2001)
     throw new QethError("WPL must contain 1 to 2001 supported rows.");
-  return input.map((item: unknown, index): MissionItem => {
+  return Array.from(input).map((item: unknown, index): MissionItem => {
     if (
       !record(item) ||
       Object.keys(item).some(

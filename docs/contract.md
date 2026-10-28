@@ -37,3 +37,5 @@ Serialization validates the whole supported mission and preserves numeric values
 `plan AREA --out NEW_DIR [--settings JSON] [--home JSON]` writes `plan.json` and `route.geojson`, plus `survey.waypoints` when explicit home data is supplied. The destination must not exist and its parent must exist. Inputs must be bounded regular UTF-8 files. No overwrite or network connection occurs. `check FILE` prints a format/frame summary as JSON. Exit codes: 0 success, 2 invalid input, 1 I/O or runtime failure.
 
 The browser reads local GeoJSON or lets users draw closed rings on a clearly labeled local coordinate grid. It shows the same core's route and assumptions. WPL download requires explicit home values. A strict public-file development server binds to loopback; only static app/modules/fixtures are served. No vehicle API, upload service, telemetry, map tiles, or external runtime assets exist.
+
+The library WPL serializer requires a dense array of supported rows. Missing array elements are invalid rows; they cannot be serialized as blank lines. This applies before writing any output, and valid supported rows retain parse/serialize round trips.
